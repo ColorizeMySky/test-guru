@@ -1,0 +1,7 @@
+.bundle/
+log/
+node_modules/
+tmp/
+vendor/bundle/
+
+.env
