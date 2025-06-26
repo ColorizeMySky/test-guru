@@ -1,5 +1,7 @@
 require_relative "boot"
 
+require "logger"
+
 require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -29,8 +31,12 @@ module TestGuru
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = 'Moscow'
+    config.active_record.default_timezone = :local
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.i18n.default_locale = :ru
+    config.i18n.available_locales = [:en, :ru]
 
     # Don't generate system test files.
     config.generators.system_tests = nil

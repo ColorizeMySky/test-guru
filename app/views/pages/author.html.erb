@@ -1,0 +1,21 @@
+<div class="container author-page">
+  <h1>Об авторе</h1>
+
+  <div class="author-info mt-4">
+    <div class="author-bio">
+      <p>
+        Привет! Я разработчик этого приложения TestGuru.
+      </p>
+
+      <p>
+        Это учебный проект, созданный в рамках курса онлайн-школы
+        <%= link_to 'Thinknetica', 'http://www.thinknetica.com', target: '_blank', rel: 'noopener noreferrer' %>.
+      </p>
+
+      <p class="mt-3">
+        Мой профиль на GitHub:
+        <%= link_to @github_profile, @github_profile, target: '_blank', rel: 'noopener noreferrer' %>
+      </p>
+    </div>
+  </div>
+</div>

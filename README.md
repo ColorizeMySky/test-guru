@@ -1,24 +1,49 @@
-# README
+# Сущности системы TestGuru
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. **Пользователь**
+   - Администратор
+   - Преподаватель (автор тестов)
+   - Ученик (тестируемый)
 
-Things you may want to cover:
+2. **Тест**
+   - Название
+   - Уровень сложности
+   - Категория
+   - Таймер (ограничение по времени)
+   - Статус (черновик/опубликован)
 
-* Ruby version
+3. **Вопрос**
+   - Текст вопроса
+   - Тип вопроса:
+     - Одиночный выбор
+     - Множественный выбор
+     - Открытый ответ
+   - Баллы за правильный ответ
 
-* System dependencies
+4. **Ответ**
+   - Текст ответа
+   - Флаг правильности
 
-* Configuration
+5. **Результат теста**
+   - Пройден/не пройден
+   - Количество баллов
+   - Процент правильных ответов
+   - Время прохождения
 
-* Database creation
 
-* Database initialization
+---------------
 
-* How to run the test suite
+# Troubleshooting
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## При несовместимости версий помогут
 
-* ...
+*Команды выполняем через `bundle exec <command>`*
+
+```bash
+rbenv shell 2.7.8
+```
+
+```bash
+nvm use 16.20.2
+```
