@@ -1,14 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.8'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.7.7'
+gem 'rails', '~> 7.1.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -41,11 +39,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'activesupport', '6.1.7.7'
-gem 'activemodel', '6.1.7.7'
-gem 'activerecord', '6.1.7.7'
-gem 'actionpack', '6.1.7.7'
-gem 'actionview', '6.1.7.7'
-gem 'actionmailer', '6.1.7.7'
-gem 'railties', '6.1.7.7'

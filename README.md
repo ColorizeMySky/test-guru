@@ -34,10 +34,18 @@
    - Процент правильных ответов
    - Время прохождения
 
+---------------
+# New versions
+
+### It's working OK now
+
+Rails version: 7.1.5.1
+Ruby version: ruby 3.3.5 (2024-09-03 revision ef084cc8f4) [x86_64-linux]
+
 
 ---------------
 
-# Troubleshooting
+# Troubleshooting [ DEPRECATED ]
 
 
 ## При несовместимости версий помогут
