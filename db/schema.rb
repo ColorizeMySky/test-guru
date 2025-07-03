@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_03_175737) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_03_183020) do
   create_table "answers", force: :cascade do |t|
-    t.string "answer_text"
-    t.boolean "is_correct"
+    t.string "answer_text", null: false
+    t.boolean "is_correct", null: false
     t.integer "test_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -21,15 +21,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_03_175737) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
+    t.string "name", null: false
+    t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
   create_table "question_types", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,9 +37,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_03_175737) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "text"
+    t.string "text", null: false
     t.integer "question_type_id", null: false
-    t.integer "score"
+    t.integer "score", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_type_id"], name: "index_questions_on_question_type_id"
@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_03_175737) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_roles_on_name", unique: true
@@ -84,8 +84,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_03_175737) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password"
+    t.string "email", null: false
+    t.string "password", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
