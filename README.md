@@ -1,24 +1,61 @@
-# README
+# Сущности системы TestGuru
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. **Пользователь**
+   - Администратор
+   - Преподаватель (автор тестов)
+   - Ученик (тестируемый)
 
-Things you may want to cover:
+2. **Категория**
+   - Название
+   - Описание (опционально)
 
-* Ruby version
+3. **Тест**
+   - Название
+   - Уровень сложности
+   - Категория
+   - Таймер (ограничение по времени)
+   - Статус (черновик/опубликован)
 
-* System dependencies
+4. **Вопрос**
+   - Текст вопроса
+   - Тип вопроса:
+     - Одиночный выбор
+     - Множественный выбор
+     - Открытый ответ
+   - Баллы за правильный ответ
 
-* Configuration
+5. **Ответ**
+   - Текст ответа
+   - Флаг правильности
 
-* Database creation
+6. **Результат теста**
+   - Пройден/не пройден
+   - Количество баллов
+   - Процент правильных ответов
+   - Время прохождения
 
-* Database initialization
+---------------
+# New versions
 
-* How to run the test suite
+### It's working OK now
 
-* Services (job queues, cache servers, search engines, etc.)
+Rails version: 7.1.5.1
+Ruby version: ruby 3.3.5 (2024-09-03 revision ef084cc8f4) [x86_64-linux]
 
-* Deployment instructions
 
-* ...
+---------------
+
+# Troubleshooting [ DEPRECATED ]
+
+
+## При несовместимости версий помогут
+
+*Команды выполняем через `bundle exec <command>`*
+
+```bash
+rbenv shell 2.7.8
+```
+
+```bash
+nvm use 16.20.2
+```

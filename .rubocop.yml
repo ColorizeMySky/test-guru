@@ -1,0 +1,14 @@
+AllCops:
+  TargetRubyVersion: 3.3.5
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'log/**/*'
+    - 'spec/fixtures/**/*'
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'config/**/*'
