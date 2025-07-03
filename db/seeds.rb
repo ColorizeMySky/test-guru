@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# db/seeds.rb
+[
+  { name: QuestionType::SINGLE_CHOICE },
+  { name: QuestionType::MULTIPLE_CHOICE },
+  { name: QuestionType::OPEN_ANSWER }
+].each { |attrs| QuestionType.find_or_create_by!(attrs) }
+
+[
+  { name: Role::ADMIN },
+  { name: Role::TEACHER },
+  { name: Role::STUDENT }
+].each { |attrs| Role.find_or_create_by!(attrs) }
