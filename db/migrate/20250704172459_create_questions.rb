@@ -7,6 +7,5 @@ class CreateQuestions < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
-    add_index :questions, :text, unique: true
   end
 end
