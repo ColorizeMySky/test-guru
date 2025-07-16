@@ -1,19 +1,50 @@
-# Создание пользователей
-user1 = User.create!(email: 'user1@example.com', password: 'password1')
-user2 = User.create!(email: 'user2@example.com', password: 'password2')
+Answer.delete_all
+Question.delete_all
+Test.delete_all
+Category.delete_all
+User.delete_all
 
-# Создание категорий
+user1 = User.create!(email: 'alice@example.com', password: 'securepass')
+user2 = User.create!(email: 'bob@example.com', password: '12345678')
+
 category1 = Category.create!(name: 'Бэкенд')
 category2 = Category.create!(name: 'Фронтенд')
 
-# Создание тестов
-test1 = Test.create!(name: 'Основы Ruby', level: 1, category: category1, author: user1)
-test2 = Test.create!(name: 'Основы HTML', level: 1, category: category2, author: user2)
+test1 = Test.create!(name: 'Основы Ruby', level: 1, category_id: category1.id, author_id: user1.id)
+test2 = Test.create!(name: 'Основы HTML', level: 1, category_id: category2.id, author_id: user2.id)
 
-# Создание вопросов
-question1 = Question.create!(text: 'Что такое Ruby?', score: 5, test: test1)
-question2 = Question.create!(text: 'Что такое HTML?', score: 5, test: test2)
+q1 = Question.create!(text: 'Что такое переменная в Ruby?', score: 5, test_id: test1.id)
+Answer.create!(answer_text: 'Именованное хранилище данных', is_correct: true, question_id: q1.id)
+Answer.create!(answer_text: 'Тип данных', is_correct: false, question_id: q1.id)
+Answer.create!(answer_text: 'Метод', is_correct: false, question_id: q1.id)
+Answer.create!(answer_text: 'Класс', is_correct: false, question_id: q1.id)
 
-# Создание ответов
-Answer.create!(answer_text: 'Язык программирования', is_correct: true, question: question1)
-Answer.create!(answer_text: 'Язык разметки', is_correct: true, question: question2)
+q2 = Question.create!(text: 'Как объявить массив в Ruby?', score: 5, test_id: test1.id)
+Answer.create!(answer_text: 'array = [1, 2, 3]', is_correct: true, question_id: q2.id)
+Answer.create!(answer_text: 'array := (1, 2, 3)', is_correct: false, question_id: q2.id)
+Answer.create!(answer_text: 'array <- 1, 2, 3', is_correct: false, question_id: q2.id)
+Answer.create!(answer_text: 'array = {1; 2; 3}', is_correct: false, question_id: q2.id)
+
+q3 = Question.create!(text: 'Что делает метод puts в Ruby?', score: 5, test_id: test1.id)
+Answer.create!(answer_text: 'Выводит строку в консоль', is_correct: true, question_id: q3.id)
+Answer.create!(answer_text: 'Сохраняет данные в файл', is_correct: false, question_id: q3.id)
+Answer.create!(answer_text: 'Создаёт переменную', is_correct: false, question_id: q3.id)
+Answer.create!(answer_text: 'Удаляет объект', is_correct: false, question_id: q3.id)
+
+q4 = Question.create!(text: 'Что делает тег <p> в HTML?', score: 5, test_id: test2.id)
+Answer.create!(answer_text: 'Создаёт абзац текста', is_correct: true, question_id: q4.id)
+Answer.create!(answer_text: 'Добавляет картинку', is_correct: false, question_id: q4.id)
+Answer.create!(answer_text: 'Формирует таблицу', is_correct: false, question_id: q4.id)
+Answer.create!(answer_text: 'Выделяет заголовок', is_correct: false, question_id: q4.id)
+
+q5 = Question.create!(text: 'Как вставить ссылку в HTML?', score: 5, test_id: test2.id)
+Answer.create!(answer_text: '<a href="...">Текст</a>', is_correct: true, question_id: q5.id)
+Answer.create!(answer_text: '<link src="...">', is_correct: false, question_id: q5.id)
+Answer.create!(answer_text: '<url>...</url>', is_correct: false, question_id: q5.id)
+Answer.create!(answer_text: '<ref="...">Ссылка</ref>', is_correct: false, question_id: q5.id)
+
+q6 = Question.create!(text: 'Для чего используется тег <img>?', score: 5, test_id: test2.id)
+Answer.create!(answer_text: 'Для вставки изображения', is_correct: true, question_id: q6.id)
+Answer.create!(answer_text: 'Для оформления текста', is_correct: false, question_id: q6.id)
+Answer.create!(answer_text: 'Для создания формы', is_correct: false, question_id: q6.id)
+Answer.create!(answer_text: 'Для подключения скриптов', is_correct: false, question_id: q6.id)
