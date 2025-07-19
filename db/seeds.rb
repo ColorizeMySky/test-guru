@@ -1,5 +1,6 @@
 Answer.delete_all
 Question.delete_all
+Result.delete_all
 Test.delete_all
 Category.delete_all
 User.delete_all
@@ -48,3 +49,18 @@ Answer.create!(answer_text: 'Для вставки изображения', is_c
 Answer.create!(answer_text: 'Для оформления текста', is_correct: false, question_id: q6.id)
 Answer.create!(answer_text: 'Для создания формы', is_correct: false, question_id: q6.id)
 Answer.create!(answer_text: 'Для подключения скриптов', is_correct: false, question_id: q6.id)
+
+Result.create!(passed: true, score: 15, correct_percentage: 100.0, time: Time.current,
+               user_id: user1.id, test_id: test1.id)
+Result.create!(passed: false, score: 5, correct_percentage: 33.3, time: Time.current,
+               user_id: user1.id, test_id: test2.id)
+Result.create!(passed: true, score: 10, correct_percentage: 66.7, time: Time.current,
+               user_id: user2.id, test_id: test1.id)
+Result.create!(passed: true, score: 15, correct_percentage: 100.0, time: Time.current,
+               user_id: user2.id, test_id: test2.id)
+Result.create!(passed: false, score: 0, correct_percentage: 0.0, time: Time.current,
+               user_id: user1.id, test_id: test1.id)
+Result.create!(passed: true, score: 10, correct_percentage: 66.7, time: Time.current,
+               user_id: user2.id, test_id: test2.id)
+Result.create!(passed: false, score: 5, correct_percentage: 33.3, time: Time.current,
+               user_id: user1.id, test_id: test2.id)
