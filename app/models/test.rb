@@ -14,4 +14,8 @@ class Test < ApplicationRecord
   scope :sorted_names_by_category, ->(name) {
     joins(:category).where(categories: { name: name }).order(name: :desc).pluck(:name)
   }
+
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: :level }
+  validates :level, numericality: { only_integer: true, greater_than: 0 }
 end
