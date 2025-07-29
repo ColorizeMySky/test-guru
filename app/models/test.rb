@@ -8,10 +8,14 @@ class Test < ApplicationRecord
   has_many :results, dependent: :destroy
   has_many :users, through: :results
 
-  def self.sorted_names_by_category(category_name)
-    joins(:category)
-      .where(categories: { name: category_name })
-      .order(name: :desc)
-      .pluck(:name)
-  end
+  scope :easy, -> { where(level: [0, 1]) }
+  scope :medium, -> { where(level: 2..4) }
+  scope :hard, -> { where(level: 5..Float::INFINITY) }
+  scope :sorted_names_by_category, ->(name) {
+    joins(:category).where(categories: { name: name }).order(name: :desc).pluck(:name)
+  }
+
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: :level }
+  validates :level, numericality: { only_integer: true, greater_than: 0 }
 end
