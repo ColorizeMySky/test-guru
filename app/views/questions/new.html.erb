@@ -1,0 +1,26 @@
+<form action="/tests/<%= @test.id %>/questions" method="post">
+  <div>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label><h3>Текст вопроса:</h3></label>
+    <br>
+    <textarea name="text"></textarea>
+  </div>
+
+  <div>
+    <label><b>Ответ 1:</b></label>
+    <br>
+    <input type="text" name="answers[0][answer_text]">
+    <input type="checkbox" name="answers[0][is_correct]" value="1"> Правильный
+  </div>
+
+  <div>
+    <label><b>Ответ 2:</b></label>
+    <br>
+    <input type="text" name="answers[1][answer_text]">
+    <input type="checkbox" name="answers[1][is_correct]" value="1"> Правильный
+  </div>
+
+  <div>
+    <input type="submit" value="Создать">
+  </div>
+</form>
