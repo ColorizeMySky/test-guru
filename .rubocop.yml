@@ -12,3 +12,6 @@ AllCops:
 Style/FrozenStringLiteralComment:
   Exclude:
     - 'config/**/*'
+
+Style/Documentation:
+  Enabled: false
