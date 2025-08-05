@@ -3,7 +3,7 @@
 <%= form_with model: [@test, @question] do |form| %>
   <%= form.label :text, 'Текст вопроса:' %>
   <%= form.text_field :text %>
-  <%= form.submit 'Создать' %>
+  <%= form.submit 'Сохранить' %>
 <% end %>
 
-<%= link_to 'Назад', test_questions_path(@test) %>
+<%= link_to 'Назад', test_path(@test) %>
