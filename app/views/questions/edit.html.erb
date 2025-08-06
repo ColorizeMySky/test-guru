@@ -1,4 +1,4 @@
-<h2><%= question_header(@test) %></h2>
+<h2><%= question_header(@question, @test) %></h2>
 
 <%= form_with model: [@test, @question] do |form| %>
   <%= form.label :text, 'Текст вопроса:' %>

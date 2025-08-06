@@ -1,14 +1,10 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
-  before_action :set_test, only: %i[index show edit update destroy new create]
-  before_action :set_question, only: %i[show destroy]
+  before_action :set_test, only: %i[new create edit update]
+  before_action :set_question, only: %i[show edit update destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :question_not_found
-
-  def index
-    @questions = @test.questions
-  end
 
   def show; end
 
@@ -39,7 +35,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    render html: "<div>Вопрос удалён</div><div><b>ID: #{@question.id}</b></div>".html_safe
+    redirect_to test_path(@test)
   end
 
   private
@@ -50,6 +46,7 @@ class QuestionsController < ApplicationController
 
   def set_question
     @question = Question.find(params[:id])
+    @test = @question.test
   end
 
   def question_not_found

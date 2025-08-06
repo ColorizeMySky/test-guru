@@ -2,6 +2,6 @@
 
 Rails.application.routes.draw do
   resources :tests do
-    resources :questions, shallow: true
+      resources :questions, only: %i[new create show edit update destroy], shallow: true
   end
 end
