@@ -1,19 +1,12 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
-  before_action :set_test, only: %i[index new create]
-  before_action :set_question, only: %i[show destroy]
+  before_action :set_test, only: %i[new create edit update]
+  before_action :set_question, only: %i[show edit update destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :question_not_found
 
-  def index
-    @questions = @test.questions
-    render json: @questions
-  end
-
-  def show
-    render json: @question
-  end
+  def show; end
 
   def new
     @question = @test.questions.build
@@ -30,9 +23,19 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @question.update(question_params)
+      redirect_to test_question_path(@test, @question)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @question.destroy
-    render html: "<div>Вопрос удалён</div><div><b>ID: #{@question.id}</b></div>".html_safe
+    redirect_to test_path(@test)
   end
 
   private
@@ -43,6 +46,7 @@ class QuestionsController < ApplicationController
 
   def set_question
     @question = Question.find(params[:id])
+    @test = @question.test
   end
 
   def question_not_found

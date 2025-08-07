@@ -1,0 +1,6 @@
+<h2>Вопросы для теста: <%= @test.name %></h2>
+
+<%= render @questions %>
+
+<%= link_to 'Новый вопрос', new_test_question_path(@test) %>
+<%= link_to 'Назад к тесту', test_path(@test) %>

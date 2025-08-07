@@ -1,0 +1,5 @@
+<div>
+  <h3><%= question.text %></h3>
+  <%= link_to 'Просмотр', question_path(question) %>
+  <%= button_to 'Удалить', question_path(question), method: :delete %>
+</div>
