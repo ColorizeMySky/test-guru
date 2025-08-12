@@ -1,0 +1,15 @@
+<h1>Тест "<%= @test_passage.test.name %>" завершён!</h1>
+
+<% success_rate = @test_passage.test.questions.count > 0 ? (@test_passage.correct_questions.to_f / @test_passage.test.questions.count) * 100 : 0 %>
+
+<p>Правильных ответов: <%= @test_passage.correct_questions %> из <%= @test_passage.test.questions.count %></p>
+
+<% if success_rate >= 85 %>
+  <p>Процент успеха: <span style="color: green;"><%= format('%.1f', success_rate) %>%</span></p>
+  <p>Тест успешно пройден! Поздравляем!</p>
+<% else %>
+  <p>Процент успеха: <span style="color: red;"><%= format('%.1f', success_rate) %>%</span></p>
+  <p>Тест не пройден. Повторите материал и попробуйте снова.</p>
+<% end %>
+
+<%= link_to 'Назад к списку тестов', tests_path %>

@@ -1,8 +1,3 @@
 <h1>Список тестов</h1>
 
-<% @tests.each do |test| %>
-  <div>
-    <%= link_to test.name, test %>
-    (<%= test.questions.count %> вопросов)
-  </div>
-<% end %>
+<%= render @tests %>
