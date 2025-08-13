@@ -5,10 +5,7 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  before_validation :set_first_question, on: :create
-  before_validation :set_next_question, on: :update
-
-  attr_accessor :answer_ids
+  before_validation :set_current_question
 
   def completed?
     current_question.nil?
@@ -19,20 +16,33 @@ class TestPassage < ApplicationRecord
     save!
   end
 
-  private
-
-  def set_first_question
-    self.current_question = test.questions.first if test.present?
+  def success_rate
+    return 0 if test.questions.empty?
+    (correct_questions.to_f / test.questions.count) * 100
   end
 
-  def set_next_question
-    self.current_question = test.questions.order(:id).where('id > ?', current_question&.id).first
+  def successful?
+    success_rate >= 85
+  end
+
+  private
+
+  def set_current_question
+    self.current_question = next_question
+  end
+
+  def next_question
+    if test.present?
+      if current_question.nil?
+        test.questions.first
+      else
+        test.questions.order(:id).where('id > ?', current_question.id).first
+      end
+    end
   end
 
   def correct_answer?(answer_ids)
-    correct_answers_count = correct_answers.count
-    (correct_answers_count == correct_answers.where(id: answer_ids).count) &&
-      correct_answers_count == answer_ids.count
+    correct_answers.pluck(:id).sort == answer_ids.map(&:to_i).uniq.sort
   end
 
   def correct_answers
