@@ -18,6 +18,7 @@ class TestPassage < ApplicationRecord
 
   def success_rate
     return 0 if test.questions.empty?
+
     (correct_questions.to_f / test.questions.count) * 100
   end
 
@@ -32,12 +33,12 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
-    if test.present?
-      if current_question.nil?
-        test.questions.first
-      else
-        test.questions.order(:id).where('id > ?', current_question.id).first
-      end
+    return nil unless test.present?
+
+    if current_question.nil?
+      test.questions.first
+    else
+      test.questions.order(:id).where('id > ?', current_question.id).first
     end
   end
 
