@@ -7,6 +7,8 @@ class TestPassage < ApplicationRecord
 
   before_validation :set_current_question
 
+  SUCCESS_RATE_LEVEL = 85
+
   def completed?
     current_question.nil?
   end
@@ -23,7 +25,7 @@ class TestPassage < ApplicationRecord
   end
 
   def successful?
-    success_rate >= 85
+    success_rate >= SUCCESS_RATE_LEVEL
   end
 
   private
@@ -43,6 +45,8 @@ class TestPassage < ApplicationRecord
   end
 
   def correct_answer?(answer_ids)
+    return false if answer_ids.nil?
+
     correct_answers.pluck(:id).sort == answer_ids.map(&:to_i).uniq.sort
   end
 
