@@ -1,0 +1,9 @@
+<h1>Прохождение теста: <%= @test_passage.test.name %></h1>
+
+<p>Вопрос <%= @test_passage.test.questions.order(:id).where('id <= ?', @test_passage.current_question.id).count %> из <%= @test_passage.test.questions.count %></p>
+
+<b><%= @test_passage.current_question.text %></b>
+
+<%= render "form" %>
+
+<%= link_to "Вернуться к списку тестов", tests_path %>
