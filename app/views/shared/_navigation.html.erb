@@ -1,0 +1,10 @@
+<nav class="navigation">
+  <%= link_to 'TestGuru', root_path %>
+
+  <% if logged_in? %>
+    <%= link_to 'Выйти', logout_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Регистрация', signup_path %>
+    <%= link_to 'Войти', login_path %>
+  <% end %>
+</nav>
