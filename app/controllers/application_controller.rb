@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user!
-    unless current_user
-      store_location
-      redirect_to login_path, alert: 'Вы гуру? Пожалуйста, проверьте свой email и пароль'
-    end
+    return if current_user
+
+    store_location
+    redirect_to login_path, alert: 'Вы гуру? Пожалуйста, проверьте свой email и пароль'
   end
 
   def current_user
