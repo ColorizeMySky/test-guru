@@ -1,0 +1,5 @@
+<div>
+  <%= link_to test.name, test %>
+  (<%= test.questions.count %> вопросов)
+  <%= button_to 'Start', start_test_path(test), method: :post %>
+</div>
