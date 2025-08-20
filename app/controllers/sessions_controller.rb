@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   def create
-    user = User.find_by(email: params[:email])
+    @user = login_user
 
-    if user&.authenticate(params[:password])
+    if @user
       session[:user_id] = user.id
       redirect_to session.delete(:forwarding_url) || tests_path
     else
@@ -14,5 +16,12 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:user_id)
     redirect_to root_path
+  end
+
+  private
+
+  def login_user
+    user = User.find_by(email: params[:email])
+    user if user&.authenticate(params[:password])
   end
 end
