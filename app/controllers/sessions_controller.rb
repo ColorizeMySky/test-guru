@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     if @user
       session[:user_id] = user.id
-      redirect_to session.delete(:forwarding_url) || tests_path
+      redirect_to cookies.delete(:forwarding_url) || tests_path
     else
       flash.now[:alert] = 'Вы гуру? Пожалуйста, проверьте свой email и пароль'
       render :new

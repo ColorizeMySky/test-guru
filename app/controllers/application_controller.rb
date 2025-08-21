@@ -22,6 +22,6 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    session[:forwarding_url] = request.full_path if request.get?
+    cookies[:forwarding_url] = request.full_path if request.get?
   end
 end
