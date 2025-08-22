@@ -1,18 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'users/new'
 
   root 'tests#index'
 
-  get :signup, to: 'users#new'
-  get :login, to: 'sessions#new'
-
-  delete :logout, to: 'sessions#destroy'
-
-  resources :users, only: :create
-  resources :sessions, only: :create
+  devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
 
   resources :tests do
     resources :questions, only: %i[new create show edit update destroy], shallow: true
@@ -26,5 +18,9 @@ Rails.application.routes.draw do
     member do
       get :result
     end
+  end
+
+  namespace :admin do
+    resources :tests
   end
 end
