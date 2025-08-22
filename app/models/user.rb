@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   scope :tests_by_level, ->(level) { joins(:results).where(tests: { level: level }) }
 
-  validates :email, presence: true
+  has_secure_password
 
   def test_passage(test)
     test_passages.order(id: :desc).find_by(test_id: test.id)

@@ -6,16 +6,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%# TODO Временно отключаем. так как из-за них падает фронт %>
-    <%# <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= render 'shared/navigation' %>
+    <%= flash_messages %>
     <%= yield %>
-    <% flash.each do |type, message| %>
-      <div class="alert alert-<%= type %>"><%= message %></div>
-    <% end %>
-
     <%= render 'shared/footer' %>
   </body>
 </html>
