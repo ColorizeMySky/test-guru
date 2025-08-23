@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
 
   resources :tests do
-    resources :questions, only: %i[new create show edit update destroy], shallow: true
+    resources :questions, only: %i[show], shallow: true
 
     member do
       post :start
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :tests
+    resources :tests do
+      resources :questions, only: %i[new create show edit update destroy], shallow: true
+    end
   end
 end

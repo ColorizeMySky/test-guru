@@ -2,48 +2,13 @@
 
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_test, only: %i[new create edit update]
-  before_action :set_question, only: %i[show edit update destroy]
+  before_action :set_question, only: %i[show]
 
   rescue_from ActiveRecord::RecordNotFound, with: :question_not_found
 
   def show; end
 
-  def new
-    @question = @test.questions.build
-  end
-
-  def create
-    @question = @test.questions.build(question_params)
-
-    if @question.save
-      redirect_to test_questions_path(@test)
-    else
-      flash[:notice] = 'Не удалось создать вопрос'
-      render :new
-    end
-  end
-
-  def edit; end
-
-  def update
-    if @question.update(question_params)
-      redirect_to test_question_path(@test, @question)
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @question.destroy
-    redirect_to test_path(@test)
-  end
-
   private
-
-  def set_test
-    @test = Test.find(params[:test_id])
-  end
 
   def set_question
     @question = Question.find(params[:id])
@@ -52,9 +17,5 @@ class QuestionsController < ApplicationController
 
   def question_not_found
     render plain: 'Question was not found', status: :not_found
-  end
-
-  def question_params
-    params.require(:question).permit(:text)
   end
 end
