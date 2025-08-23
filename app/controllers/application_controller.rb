@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(Admin)
       admin_tests_path
     else
+      flash[:notice] = "Привет, #{[resource.first_name, resource.last_name].compact.join(' ')}!" if resource.first_name || resource.last_name
       super
     end
   end
