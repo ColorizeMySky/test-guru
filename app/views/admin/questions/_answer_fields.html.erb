@@ -1,0 +1,10 @@
+<div class="answer-field">
+  <div>
+    <%= form.label :answer_text, "Текст ответа" %>
+    <%= form.text_area :answer_text %>
+  </div>
+  <div>
+    <%= form.label :is_correct, "Правильный?" %>
+    <%= form.check_box :is_correct, { unchecked_value: "0" } %>
+  </div>
+</div>
