@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     if @user
       session[:user_id] = user.id
-      set_welcome_flash(@user)
+      welcome_flash(@user)
       redirect_to cookies.delete(:forwarding_url) || tests_path
     else
       flash.now[:alert] = 'Вы гуру? Пожалуйста, проверьте свой email и пароль'
@@ -26,9 +26,9 @@ class SessionsController < ApplicationController
     user if user&.authenticate(params[:password])
   end
 
-  def set_welcome_flash(user)
-    if user.first_name || user.last_name
-      flash[:notice] = "Привет, #{[user.first_name, user.last_name].compact.join(' ')}!"
-    end
+  def welcome_flash(user)
+    return unless user.first_name || user.last_name
+
+    flash[:notice] = "Привет, #{[user.first_name, user.last_name].compact.join(' ')}!"
   end
 end
