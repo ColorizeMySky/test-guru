@@ -1,0 +1,10 @@
+<div>
+  <tr>
+    <td><%= test.name %></td>
+    <td><%= test.level %></td>
+    <td><%= test.questions.count %> вопросов</td>
+    <td><%= link_to 'Show', admin_test_path(test) %></td>
+    <td><%= link_to 'Edit', edit_admin_test_path(test) %></td>
+    <td><%= link_to 'Delete', admin_test_path(test), method: :delete, data:  { confirm: 'Вы уверены?' } %></td>
+  </tr>
+</div>

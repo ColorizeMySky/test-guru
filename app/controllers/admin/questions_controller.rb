@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class QuestionsController < ApplicationController
-  before_action :authenticate_user!
+class Admin::QuestionsController < Admin::BaseController
   before_action :set_test, only: %i[new create edit update]
   before_action :set_question, only: %i[show edit update destroy]
 
@@ -11,13 +10,14 @@ class QuestionsController < ApplicationController
 
   def new
     @question = @test.questions.build
+    4.times { @question.answers.build }
   end
 
   def create
     @question = @test.questions.build(question_params)
 
     if @question.save
-      redirect_to test_questions_path(@test)
+      redirect_to admin_test_path(@test)
     else
       flash[:notice] = 'Не удалось создать вопрос'
       render :new
@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to test_question_path(@test, @question)
+      redirect_to admin_test_path(@test)
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to test_path(@test)
+    redirect_to admin_test_path(@test)
   end
 
   private
@@ -55,6 +55,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:text)
+    params.require(:question).permit(:text, :score, answers_attributes: %i[id answer_text is_correct _destroy])
   end
 end
