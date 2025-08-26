@@ -1,10 +1,10 @@
-<h1>Редактировать тест</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render 'form', test: @test %>
 
-<h3>Вопросы:</h3>
+<h2><%= t('.questions') %></h2>
 <%= render @test.questions %>
 
-<%= link_to 'Добавить вопрос', new_admin_test_question_path(@test) %>
+<%= link_to t('.add_question'), new_admin_test_question_path(@test) %>
 
-<%= link_to 'Назад', admin_tests_path, class: 'btn' %>
+<%= link_to t('.back'), admin_tests_path, class: 'btn' %>
