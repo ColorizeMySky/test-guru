@@ -1,2 +1,9 @@
 ru:
   hello: "Привет, мир"
+  activerecord:
+    errors:
+      models:
+        test:
+          attributes:
+            name:
+              blank: "не может быть пустым"

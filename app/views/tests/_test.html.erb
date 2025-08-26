@@ -1,5 +1,8 @@
 <div>
-  <%= link_to test.name, test %>
-  (<%= test.questions.count %> вопросов)
-  <%= button_to 'Start', start_test_path(test), method: :post %>
+  <tr>
+    <td><%= link_to test.name, test %></td>
+    <td><%= test.level %></td>
+    <td><%= test.questions.count %> вопросов</td>
+    <td><%= button_to 'Start', start_test_path(test), method: :post %></td>
+  </tr>
 </div>

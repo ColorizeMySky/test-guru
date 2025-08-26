@@ -1,9 +1,0 @@
-<h2><%= question_header(@question, @test) %></h2>
-
-<%= form_with model: [@test, @question] do |form| %>
-  <%= form.label :text, 'Текст вопроса:' %>
-  <%= form.text_field :text %>
-  <%= form.submit 'Сохранить' %>
-<% end %>
-
-<%= link_to 'Назад', test_path(@test) %>

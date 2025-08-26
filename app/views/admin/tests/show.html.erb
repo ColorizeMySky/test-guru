@@ -1,0 +1,8 @@
+<h1><%= @test.name %></h1>
+
+<h2>Вопросы:</h2>
+<%= render @questions %>
+
+<%= link_to 'Добавить вопрос', new_admin_test_question_path(@test) %>
+
+<%= link_to 'Назад', admin_tests_path, class: 'btn' %>

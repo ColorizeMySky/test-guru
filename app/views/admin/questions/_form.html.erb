@@ -1,0 +1,22 @@
+<%= form_with model: [:admin, @test, question], local: true do |form| %>
+  <%= render 'shared/errors', resource: question %>
+
+  <div>
+    <%= form.label :text %>
+    <%= form.text_area :text %>
+  </div>
+
+  <div>
+    <%= form.label :score, "Баллы за вопрос" %>
+    <%= form.number_field :score, value: 1, min: 1, required: true %>
+  </div>
+
+  <div>
+    <h3>Ответы (от 1 до 4)</h3>
+    <%= form.fields_for :answers, @question.answers do |answer_form| %>
+      <%= render 'answer_fields', form: answer_form %>
+    <% end %>
+  </div>
+
+  <div><%= form.submit %></div>
+<% end %>

@@ -1,0 +1,20 @@
+<%= form_with model: test, url: test.persisted? ? admin_test_path(test) : admin_tests_path, local: true do |form| %>
+  <%= render 'shared/errors', resource: test %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :level %>
+    <%= form.number_field :level %>
+  </div>
+
+  <div>
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+  <div><%= form.submit %></div>
+<% end %>
