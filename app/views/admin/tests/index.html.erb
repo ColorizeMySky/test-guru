@@ -1,7 +1,7 @@
-<h1>Список тестов</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render @tests %>
 
 <div>
-  <%= link_to 'Создать  тест', new_admin_test_path %>
+  <%= link_to t('.new_test'), new_admin_test_path %>
 </div>

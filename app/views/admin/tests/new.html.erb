@@ -1,5 +1,5 @@
-<h1>Новый тест</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render 'form', test: @test %>
 
-<%= link_to 'Назад', admin_tests_path, class: 'btn' %>
+<%= link_to t('.back'), admin_tests_path, class: 'btn' %>

@@ -2,7 +2,7 @@
   <tr>
     <td><%= link_to test.name, test %></td>
     <td><%= test.level %></td>
-    <td><%= test.questions.count %> вопросов</td>
-    <td><%= button_to 'Start', start_test_path(test), method: :post %></td>
+    <td><%= test.questions.count %><%= t('tests.test.questions_count', count: test.questions.count) %></td>
+    <td><%= button_to t('tests.test.start'), start_test_path(test), method: :post %></td>
   </tr>
 </div>

@@ -1,33 +1,88 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      test:
+        category_id: "Category"
+        level: "Level"
+        name: "Name"
+    errors:
+      models:
+        test:
+          attributes:
+            level:
+              greater_than: "must be greater than 0"
+              not_a_number: "must be a number"
+            name:
+              blank: "can't be blank"
+              taken: "is already used in this level"
+  admin:
+    tests:
+      edit:
+        add_question: "Add question"
+        back: "Back"
+        questions: "Questions:"
+        title: "Edit test"
+      index:
+        new_test: "Create test"
+        title: "Tests list"
+      new:
+        back: "Back"
+        title: "New test"
+      show:
+        add_question: "Add question"
+        back: "Back"
+        questions: "Questions:"
+      test:
+        confirm_delete: "Are you sure?"
+        delete: "Delete"
+        edit: "Edit"
+        questions_count: "%{count} question(s)"
+        show: "Show"
+  flash:
+    admin:
+      tests:
+        create:
+          alert: "Error creating test"
+          notice: "Test was successfully created"
+        destroy:
+          alert: "Error deleting test"
+          notice: "Test was successfully deleted"
+        update:
+          alert: "Error updating test"
+          notice: "Test was successfully updated"
+  helpers:
+    label:
+      test:
+        category_id: "Category"
+        level: "Level"
+        name: "Name"
+    select:
+      prompt: "Please select"
+    submit:
+      test:
+        create: "Create"
+        update: "Update"
+  tests:
+    index:
+      title: "Tests list"
+    test:
+      questions_count: "%{count} question(s)"
+      start: "Start"
+    test_passage:
+      update: "Next"
+  tests_mailer:
+    completed_test:
+      subject: "You just completed the TestGuru test!"
+  test_passages:
+    result:
+      back_to_tests: "Back to tests list"
+      correct_answers: "Correct answers: %{correct} out of %{total}"
+      fail_message: "Test failed. Review the material and try again."
+      success_message: "Test passed successfully! Congratulations!"
+      success_rate_success_html: "Success rate: <span style=\"color: green;\">%{rate}%</span>"
+      success_rate_fail_html: "Success rate: <span style=\"color: red;\">%{rate}%</span>"
+      test_completed: "Test \"%{test_name}\" completed!"
+    show:
+      back_to_tests: "Back to tests list"
+      question_progress: "Question %{current} out of %{total}"
+      test_progress: "Taking test: %{test_name}"

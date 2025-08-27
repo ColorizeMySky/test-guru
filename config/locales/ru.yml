@@ -1,9 +1,88 @@
 ru:
-  hello: "Привет, мир"
   activerecord:
+    attributes:
+      test:
+        category_id: "Категория"
+        level: "Уровень"
+        name: "Название"
     errors:
       models:
         test:
           attributes:
+            level:
+              greater_than: "должен быть больше 0"
+              not_a_number: "должен быть числом"
             name:
               blank: "не может быть пустым"
+              taken: "уже используется в этом уровне"
+  admin:
+    tests:
+      edit:
+        add_question: "Добавить вопрос"
+        back: "Назад"
+        questions: "Вопросы:"
+        title: "Редактировать тест"
+      index:
+        new_test: "Создать тест"
+        title: "Список тестов"
+      new:
+        back: "Назад"
+        title: "Новый тест"
+      show:
+        add_question: "Добавить вопрос"
+        back: "Назад"
+        questions: "Вопросы:"
+      test:
+        confirm_delete: "Вы уверены?"
+        delete: "Удалить"
+        edit: "Редактировать"
+        questions_count: "%{count} вопрос(ов)"
+        show: "Показать"
+  flash:
+    admin:
+      tests:
+        create:
+          alert: "Ошибка при создании теста"
+          notice: "Тест успешно создан"
+        destroy:
+          alert: "Ошибка при удалении теста"
+          notice: "Тест успешно удалён"
+        update:
+          alert: "Ошибка при обновлении теста"
+          notice: "Тест успешно обновлён"
+  helpers:
+    label:
+      test:
+        category_id: "Категория"
+        level: "Уровень"
+        name: "Название"
+    select:
+      prompt: "Пожалуйста, выберите"
+    submit:
+      test:
+        create: "Создать"
+        update: "Обновить"
+      test_passage:
+        update: "Далее"
+  tests:
+    index:
+      title: "Список тестов"
+    test:
+      questions_count: "%{count} вопрос(ов)"
+      start: "Начать"
+  tests_mailer:
+    completed_test:
+      subject: "Вы успешно завершили тест на TestGuru!"
+  test_passages:
+    result:
+      back_to_tests: "Назад к списку тестов"
+      correct_answers: "Правильных ответов: %{correct} из %{total}"
+      fail_message: "Тест не пройден. Повторите материал и попробуйте снова."
+      success_message: "Тест успешно пройден! Поздравляем!"
+      success_rate_success_html: "Процент успеха: <span style=\"color: green;\">%{rate}%</span>"
+      success_rate_fail_html: "Процент успеха: <span style=\"color: red;\">%{rate}%</span>"
+      test_completed: "Тест \"%{test_name}\" завершён!"
+    show:
+      back_to_tests: "Вернуться к списку тестов"
+      question_progress: "Вопрос %{current} из %{total}"
+      test_progress: "Прохождение теста: %{test_name}"

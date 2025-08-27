@@ -1,13 +1,13 @@
-<h1>Тест "<%= @test_passage.test.name %>" завершён!</h1>
+<h1><%= t('.test_completed', test_name: @test_passage.test.name) %></h1>
 
-<p>Правильных ответов: <%= @test_passage.correct_questions %> из <%= @test_passage.test.questions.count %></p>
+<div><%= t('.correct_answers', correct: @test_passage.correct_questions, total: @test_passage.test.questions.count) %></div>
 
 <% if @test_passage.successful? %>
-  <p>Процент успеха: <span style="color: green;"><%= format('%.1f', success_rate) %>%</span></p>
-  <p>Тест успешно пройден! Поздравляем!</p>
+  <div><%= t('.success_rate_success_html', rate: format('%.1f', @test_passage.success_rate)).html_safe %></div>
+  <div><%= t('.success_message') %></div>
 <% else %>
-  <p>Процент успеха: <span style="color: red;"><%= format('%.1f', success_rate) %>%</span></p>
-  <p>Тест не пройден. Повторите материал и попробуйте снова.</p>
+  <div><%= t('.success_rate_fail_html', rate: format('%.1f', @test_passage.success_rate)).html_safe %></div>
+  <div><%= t('.fail_message') %></div>
 <% end %>
 
-<%= link_to 'Назад к списку тестов', tests_path %>
+<%= link_to t('.back_to_tests'), tests_path %>
