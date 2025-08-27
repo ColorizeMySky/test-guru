@@ -2,17 +2,21 @@
 <html>
   <head>
     <title>TestGuru</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1, shrink-to-fit="no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <%= render 'shared/navigation' %>
-    <%= render 'shared/flash' %>
-    <%= yield %>
+    <div class="container flex-grow-1">
+      <%= render 'shared/flash' %>
+      <%= yield %>
+    </div>
+
     <%= render 'shared/footer' %>
   </body>
 </html>

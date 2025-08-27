@@ -1,13 +1,21 @@
-<h1><%= t('.test_completed', test_name: @test_passage.test.name) %></h1>
+<div class="container">
+  <h1 class="my-4"><%= t('.test_completed', test_name: @test_passage.test.name) %></h1>
 
-<div><%= t('.correct_answers', correct: @test_passage.correct_questions, total: @test_passage.test.questions.count) %></div>
+  <div class="card mb-4">
+    <div class="card-body">
+      <p class="card-text">
+        <%= t('.correct_answers', correct: @test_passage.correct_questions, total: @test_passage.test.questions.count) %>
+      </p>
 
-<% if @test_passage.successful? %>
-  <div><%= t('.success_rate_success_html', rate: format('%.1f', @test_passage.success_rate)).html_safe %></div>
-  <div><%= t('.success_message') %></div>
-<% else %>
-  <div><%= t('.success_rate_fail_html', rate: format('%.1f', @test_passage.success_rate)).html_safe %></div>
-  <div><%= t('.fail_message') %></div>
-<% end %>
+      <% if @test_passage.successful? %>
+        <div><%= t('.success_rate_success_html', rate: format('%.1f', @test_passage.success_rate)).html_safe %></div>
+        <div><%= t('.success_message') %></div>
+      <% else %>
+        <div><%= t('.success_rate_fail_html', rate: format('%.1f', @test_passage.success_rate)).html_safe %></div>
+        <div><%= t('.fail_message') %></div>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to t('.back_to_tests'), tests_path %>
+  <%= link_to t('.back_to_tests'), tests_path, class: 'btn btn-primary' %>
+</div>
