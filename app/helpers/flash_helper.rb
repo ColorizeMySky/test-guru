@@ -5,6 +5,7 @@ module FlashHelper
     safe_join(
       flash.map do |type, message|
         next if type == 'timedout'
+
         content_tag :div, message, class: "alert alert-#{flash_class(type)} alert-dismissible fade show", role: 'alert'
       end.compact,
       ' '.html_safe
