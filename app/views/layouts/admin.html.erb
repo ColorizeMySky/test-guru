@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <title>Admin Panel | TestGuru</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1, shrink-to-fit="no">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,8 +11,12 @@
   </head>
   <body>
     <%= render 'admin/nav' %>
-    <%= render 'shared/flash' %>
 
-    <%= yield %>
-    </body>
+    <div class="container">
+      <%= render_flash %>
+      <%= yield %>
+    </div>
+
+    <%= render 'shared/footer' %>
+  </body>
 </html>

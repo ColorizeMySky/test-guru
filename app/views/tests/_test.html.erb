@@ -1,8 +1,6 @@
-<div>
-  <tr>
-    <td><%= link_to test.name, test %></td>
-    <td><%= test.level %></td>
-    <td><%= test.questions.count %><%= t('tests.test.questions_count', count: test.questions.count) %></td>
-    <td><%= button_to t('tests.test.start'), start_test_path(test), method: :post %></td>
-  </tr>
-</div>
+<tr lass="text-left">
+  <td class="text-left"><%= link_to test.name, test %></td>
+  <td class="text-left"><%= test.level %></td>
+  <td class="text-left"><%= t('tests.test.questions_count', count: test.questions.count) %></td>
+  <td class="text-left"><%= button_to t('tests.test.start'), start_test_path(test), method: :post, class: 'btn btn-primary' %></td>
+</tr>

@@ -1,13 +1,21 @@
-<nav class="navigation">
-  <%= link_to 'TestGuru', root_path %>
-
-  <% if user_signed_in? %>
-    <p class="nav user">
-      Добро пожаловать, <b><%= current_user.email %></b> Guru
-      <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
-    </p>
-  <% else %>
-    <%= link_to 'Регистрация', new_user_registration_path %>
-    <%= link_to 'Войти', new_user_session_path %>
+<nav class="navbar navbar-light bg-light">
+  <%= link_to root_path, class: 'ml-2 navbar-brand' do %>
+    <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle;">
+      <rect width="48" height="48" rx="16" fill="#0056b3"/>
+      <text x="24" y="32" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">TG</text>
+    </svg>
+    <span>TestGuru</span>
   <% end %>
+
+  <div class="navbar-text">
+    <% if user_signed_in? %>
+      <p>
+        Добро пожаловать, <b><%= current_user.email %></b> Guru
+        <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+      </p>
+    <% else %>
+      <%= link_to 'Регистрация', new_user_registration_path %>
+      <%= link_to 'Войти', new_user_session_path %>
+    <% end %>
+  </div>
 </nav>

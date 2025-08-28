@@ -1,8 +1,14 @@
-<footer>
-  <p>
-    &copy; <%= current_year %>, ColorizeMySky,
-    <%= github_url('ColorizeMySky', 'test-guru') %>
-    Система тестирования с поддержкой категорий, уровней сложности и таймера.
-    <%= link_to 'Учебный проект в онлайн-школе Thinknetica', 'https://thinknetica.com' %>
-  </p>
+<footer class="bg-light text-center text-muted py-3 mt-auto">
+  <div class="container">
+    <div class="mb-1">
+      &copy; <%= current_year %>, ColorizeMySky,
+      <%= github_url('ColorizeMySky', 'test-guru') %>
+    </div>
+    <div class="mb-1">
+      Система тестирования с поддержкой категорий, уровней сложности и таймера.
+    </div>
+    <div class="mb-0">
+      <%= link_to 'Учебный проект в онлайн-школе Thinknetica', 'https://thinknetica.com', target: '_blank', rel: 'noopener' %>
+    </div>
+  </div>
 </footer>

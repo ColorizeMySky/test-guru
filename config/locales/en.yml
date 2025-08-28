@@ -79,8 +79,8 @@ en:
       correct_answers: "Correct answers: %{correct} out of %{total}"
       fail_message: "Test failed. Review the material and try again."
       success_message: "Test passed successfully! Congratulations!"
-      success_rate_success_html: "Success rate: <span style=\"color: green;\">%{rate}%</span>"
-      success_rate_fail_html: "Success rate: <span style=\"color: red;\">%{rate}%</span>"
+      success_rate_success_html: "Success rate: <span class=\"text-success\">%{rate}%</span>"
+      success_rate_fail_html: "Success rate: <span class=\"text-danger\">%{rate}%</span>"
       test_completed: "Test \"%{test_name}\" completed!"
     show:
       back_to_tests: "Back to tests list"

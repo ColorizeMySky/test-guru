@@ -7,6 +7,8 @@ class TestPassage < ApplicationRecord
 
   before_validation :set_current_question
 
+  attr_accessor :answer_ids
+
   SUCCESS_RATE_LEVEL = 85
 
   def completed?
@@ -15,7 +17,7 @@ class TestPassage < ApplicationRecord
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
-    self.total_score += current_question.score
+    self.total_score += current_question.score if current_question.present?
     save!
   end
 

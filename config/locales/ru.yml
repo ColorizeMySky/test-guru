@@ -79,8 +79,8 @@ ru:
       correct_answers: "Правильных ответов: %{correct} из %{total}"
       fail_message: "Тест не пройден. Повторите материал и попробуйте снова."
       success_message: "Тест успешно пройден! Поздравляем!"
-      success_rate_success_html: "Процент успеха: <span style=\"color: green;\">%{rate}%</span>"
-      success_rate_fail_html: "Процент успеха: <span style=\"color: red;\">%{rate}%</span>"
+      success_rate_success_html: "Процент успеха: <span class=\"text-success\">%{rate}%</span>"
+      success_rate_fail_html: "Процент успеха: <span class=\"text-danger\">%{rate}%</span>"
       test_completed: "Тест \"%{test_name}\" завершён!"
     show:
       back_to_tests: "Вернуться к списку тестов"
