@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GitHubClient
   def initialize(access_token)
     @client = Octokit::Client.new(access_token: access_token)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GistQuestionService
   def initialize(question, test_passage, client: nil)
     @question = question
@@ -7,19 +9,11 @@ class GistQuestionService
   end
 
   def call
-    @client.create_gist(gist_params)
-  end
-
-  def call
     result = @client.create_gist(gist_params)
 
     if result
       @gist_url = result.html_url
-      Gist.create!(
-        question: @question,
-        user: @test_passage.user,
-        url: @gist_url
-      )
+      save_gist(result)
     end
 
     result
@@ -47,7 +41,6 @@ class GistQuestionService
 
   def gist_params
     {
-      description: "A question about #{@test.name} from TestGuru",
       description: I18n.t('gist_question_service.gist_description', test_name: @test.name),
       files: {
         'test-guru-question.txt' => {
@@ -63,4 +56,11 @@ class GistQuestionService
     content.join("\n")
   end
 
+  def save_gist(result)
+    Gist.create!(
+      question: @question,
+      user: @test_passage.user,
+      url: result.html_url
+    )
+  end
 end
