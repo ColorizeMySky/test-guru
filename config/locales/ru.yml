@@ -50,6 +50,10 @@ ru:
         update:
           alert: "Ошибка при обновлении теста"
           notice: "Тест успешно обновлён"
+  gist_question_service:
+    failure: "Не удалось создать gist"
+    gist_description: "Вопрос по тесту \"%{test_name}\" из TestGuru"
+    success: "Gist успешно создан для теста \"%{test_name}\""
   helpers:
     label:
       test:
@@ -74,6 +78,9 @@ ru:
     completed_test:
       subject: "Вы успешно завершили тест на TestGuru!"
   test_passages:
+    gist:
+      failure: "Во время сохранения gist произошла ошибка"
+      success: "Gist успешно <a href='%{gist_url}' target='_blank'>сохранён</a>."
     result:
       back_to_tests: "Назад к списку тестов"
       correct_answers: "Правильных ответов: %{correct} из %{total}"

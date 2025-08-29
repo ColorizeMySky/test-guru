@@ -1,0 +1,26 @@
+<h1>Gists</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Вопрос</th>
+      <th>Gist URL</th>
+      <th>Пользователь</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @gists.each do |gist| %>
+      <tr>
+        <td>
+          <%= link_to truncate(gist.question.text, length: 25), admin_question_path(gist.question) %>
+        </td>
+        <td>
+          <%= link_to gist.url.split('/').last, gist.url, target: "_blank" %>
+        </td>
+        <td>
+          <%= gist.user.email %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
