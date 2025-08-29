@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GistQuestionService
+  attr_reader :gist_url
+
   def initialize(question, test_passage, client: nil)
     @question = question
     @test = @question.test
@@ -23,10 +25,6 @@ class GistQuestionService
 
   def success?
     @gist_url.present?
-  end
-
-  def gist_url
-    @gist_url
   end
 
   def flash_message
