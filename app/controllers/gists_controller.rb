@@ -10,7 +10,7 @@ class GistsController < ApplicationController
     return redirect_to_questionless unless @question
 
     result = GistQuestionService.new(@question, @test_passage).call
-    set_flash(result)
+    flash_options(result)
     redirect_to @test_passage, @flash_options
   end
 
@@ -20,11 +20,11 @@ class GistsController < ApplicationController
     redirect_to @test_passage, alert: 'Нет текущего вопроса'
   end
 
-  def set_flash(result)
+  def flash_options(result)
     @flash_options = if result.success?
-                      { notice: t('gists.create.success', gist_url: result.url) }
-                    else
-                      { alert: t('gists.create.failure') }
-                    end
+                       { notice: t('gists.create.success', gist_url: result.url) }
+                     else
+                       { alert: t('gists.create.failure') }
+                     end
   end
 end
