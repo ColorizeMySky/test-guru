@@ -50,6 +50,10 @@ en:
         update:
           alert: "Error updating test"
           notice: "Test was successfully updated"
+  gists:
+    create:
+      failure: "An error occured while saving gist"
+      success: "Gist was successfully <a href='%{gist_url}' target='_blank'>created</a>."
   gist_question_service:
     failure: "Failed to create gist"
     gist_description: "A question about \"%{test_name}\" from TestGuru"
@@ -78,9 +82,6 @@ en:
     completed_test:
       subject: "You just completed the TestGuru test!"
   test_passages:
-    gist:
-      failure: "An error occured while saving gist"
-      success: "Gist was successfully <a href='%{gist_url}' target='_blank'>created</a>."
     result:
       back_to_tests: "Back to tests list"
       correct_answers: "Correct answers: %{correct} out of %{total}"

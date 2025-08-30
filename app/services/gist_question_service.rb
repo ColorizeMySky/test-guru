@@ -1,41 +1,36 @@
 # frozen_string_literal: true
 
 class GistQuestionService
-  attr_reader :gist_url
+  attr_reader :result
 
-  def initialize(question, test_passage, client: nil)
+  def initialize(question, test_passage, client = default_client)
     @question = question
     @test = @question.test
     @test_passage = test_passage
-    @client = client || GitHubClient.new(ENV['GITHUB_ACCESS_TOKEN'])
+    @client = client
   end
 
   def call
-    result = @client.create_gist(gist_params)
+    github_result = @client.create_gist(gist_params)
 
-    if result
-      @gist_url = result.html_url
-      save_gist(result)
-    end
-
-    result
-  rescue Octokit::Error
-    nil
-  end
-
-  def success?
-    @gist_url.present?
-  end
-
-  def flash_message
-    if success?
-      I18n.t('gist_question_service.success', test_name: @test.name)
+    if github_result&.html_url
+      @result = GistResult.new(github_result.html_url, true)
+      save_gist!(github_result)
     else
-      I18n.t('gist_question_service.failure')
+      @result = GistResult.new(nil, false)
     end
+  rescue Octokit::Error
+    @result = GistResult.new(nil, false)
+  ensure
+    @result
   end
 
   private
+
+  def default_client
+    token = ENV.fetch('GITHUB_ACCESS_TOKEN')
+    GitHubClient.new(token)
+  end
 
   def gist_params
     {
@@ -49,12 +44,10 @@ class GistQuestionService
   end
 
   def gist_content
-    content = [@question.text]
-    content += @question.answers.pluck(:body)
-    content.join("\n")
+    [@question.text, *@question.answers.pluck(:body)].join("\n")
   end
 
-  def save_gist(result)
+  def save_gist!(result)
     Gist.create!(
       question: @question,
       user: @test_passage.user,

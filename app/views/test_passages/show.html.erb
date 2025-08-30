@@ -13,7 +13,14 @@
 
   <%= render "form" %>
 
-  <div><%= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :post %></div>
+  <div>
+    <%= button_to 'Gist Question',
+        gists_path,
+        method: :post,
+        params: { test_passage_id: @test_passage.id },
+        class: 'btn btn-primary btn-sm'
+    %>
+  </div>
 
   <div class="mt-3">
     <%= link_to "Вернуться к списку тестов", tests_path, class: 'btn btn-secondary'  %>
