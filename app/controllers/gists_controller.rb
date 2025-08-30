@@ -7,19 +7,24 @@ class GistsController < ApplicationController
     @test_passage = TestPassage.find(params[:test_passage_id])
     @question = @test_passage.current_question
 
-    redirect_to @test_passage, alert: 'Нет текущего вопроса' unless @question
+    return redirect_to_questionless unless @question
 
-    if @question
-      result = GistQuestionService.new(@question, @test_passage).call
-      flash_options = if result.success?
-                        { notice: t('gists.create.success', gist_url: result.url) }
-                      else
-                        { alert: t('gists.create.failure') }
-                      end
-    else
-      flash_options = { alert: 'Нет текущего вопроса' }
-    end
+    result = GistQuestionService.new(@question, @test_passage).call
+    set_flash(result)
+    redirect_to @test_passage, @flash_options
+  end
 
-    redirect_to @test_passage, flash_options
+  private
+
+  def redirect_to_questionless
+    redirect_to @test_passage, alert: 'Нет текущего вопроса'
+  end
+
+  def set_flash(result)
+    @flash_options = if result.success?
+                      { notice: t('gists.create.success', gist_url: result.url) }
+                    else
+                      { alert: t('gists.create.failure') }
+                    end
   end
 end

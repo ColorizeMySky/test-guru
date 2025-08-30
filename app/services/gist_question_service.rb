@@ -19,10 +19,10 @@ class GistQuestionService
     else
       @result = GistResult.new(nil, false)
     end
-  rescue Octokit::Error
-    @result = GistResult.new(nil, false)
-  ensure
+
     @result
+  rescue Octokit::Error
+    GistResult.new(nil, false)
   end
 
   private
