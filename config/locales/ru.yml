@@ -50,6 +50,14 @@ ru:
         update:
           alert: "Ошибка при обновлении теста"
           notice: "Тест успешно обновлён"
+  gists:
+    create:
+      failure: "Во время сохранения gist произошла ошибка"
+      success: "Gist успешно <a href='%{gist_url}' target='_blank'>сохранён</a>."
+  gist_question_service:
+    failure: "Не удалось создать gist"
+    gist_description: "Вопрос по тесту \"%{test_name}\" из TestGuru"
+    success: "Gist успешно создан для теста \"%{test_name}\""
   helpers:
     label:
       test:

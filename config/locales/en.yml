@@ -50,6 +50,14 @@ en:
         update:
           alert: "Error updating test"
           notice: "Test was successfully updated"
+  gists:
+    create:
+      failure: "An error occured while saving gist"
+      success: "Gist was successfully <a href='%{gist_url}' target='_blank'>created</a>."
+  gist_question_service:
+    failure: "Failed to create gist"
+    gist_description: "A question about \"%{test_name}\" from TestGuru"
+    success: "Gist was successfully created for test \"%{test_name}\""
   helpers:
     label:
       test:

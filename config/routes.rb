@@ -19,11 +19,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :gists, only: :create
+
   namespace :admin do
     resources :tests do
       resources :questions, only: %i[new create show edit update destroy], shallow: true do
         resources :answers, only: %i[new create edit update destroy], shallow: true
       end
     end
+
+    resources :gists, only: :index
   end
 end

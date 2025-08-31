@@ -5,10 +5,20 @@
         <rect width="48" height="48" rx="16" fill="#0056b3"/>
         <text x="24" y="32" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">TG</text>
       </svg>
-      <span>TestGuru</span>
+      <%# <span class="text-warning">TestGuru</span> %>
+      <span class="text-warning font-weight-bold h5">TestGuru</span>
     <% end %>
 
-    <div class="navbar-text">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to 'Tests', admin_tests_path, class: 'nav-link text-white' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Gists', admin_gists_path, class: 'nav-link text-white' %>
+      </li>
+    </ul>
+
+    <div class="navbar-text text-white">
       Welcome, <b><%= current_user.email %></b> Guru
       <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-light ml-2' %>
     </div>
