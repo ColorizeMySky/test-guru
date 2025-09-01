@@ -29,8 +29,10 @@ gem 'devise', '~> 4.0'
 
 gem 'rails-i18n', '~> 7.0'
 
-gem 'bootstrap', '~> 4.0.0.beta'
+gem 'bootstrap', '~> 5.2', '>= 5.2.3'
 gem 'jquery-rails'
+
+gem 'octicons_helper'
 
 gem 'octokit'
 
