@@ -31,6 +31,10 @@ class TestPassage < ApplicationRecord
     success_rate >= SUCCESS_RATE_LEVEL
   end
 
+  def current_question_number
+    test.questions.order(:id).where('id <= ?', current_question.id).count
+  end
+
   private
 
   def set_current_question
