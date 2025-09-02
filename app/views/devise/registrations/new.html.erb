@@ -21,12 +21,16 @@
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> символов минимум)</em>
     <% end %><br />
-    <%= form.password_field :password, autocomplete: "new-password" %>
+    <%= form.password_field :password, autocomplete: "new-password", id: "password-input" %>
   </div>
 
   <div class="field">
     <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= form.password_field :password_confirmation, autocomplete: "new-password", id: "password-confirmation-input" %>
+    <span id="password-match-icon" class="d-inline-flex align-items-center gap-1">
+      <%= octicon 'check', class: 'd-none', style: 'width: 24px; height: 24px; fill: green;' %>
+      <%= octicon 'x', class: 'd-none', style: 'width: 24px; height: 24px; fill: red;' %>
+    </span>
   </div>
 
   <div class="actions">

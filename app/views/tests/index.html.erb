@@ -4,7 +4,11 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th><%= t('activerecord.attributes.test.name') %></th>
+        <th class="sort-by-title" role="button">
+          <%= t('activerecord.attributes.test.name') %>
+          <%= octicon 'arrow-up', class: 'text-success d-none' %>
+          <%= octicon 'arrow-down', class: 'text-succes d-none' %>
+        </th>
         <th><%= t('activerecord.attributes.test.level') %></th>
         <th><%= t('tests.test.questions_count', count: 0) %></th>
         <th><%= t('actions') %></th>
