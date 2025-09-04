@@ -22,6 +22,8 @@ ru:
         back: "Назад"
         questions: "Вопросы:"
         title: "Редактировать тест"
+      form_inline:
+        submit: "ОК"
       index:
         new_test: "Создать тест"
         title: "Список тестов"

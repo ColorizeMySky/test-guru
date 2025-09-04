@@ -1,6 +1,8 @@
 <div class="container">
   <h1  class="my-4">Прохождение теста: <%= @test_passage.test.name %></h1>
 
+  <%= render 'progress_bar' %>
+
   <div class="d-flex justify-content-between mb-3">
     Вопрос <%= @test_passage.test.questions.order(:id).where('id <= ?', @test_passage.current_question.id).count %> из <%= @test_passage.test.questions.count %>
   </div>
