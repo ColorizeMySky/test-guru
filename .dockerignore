@@ -1,0 +1,10 @@
+.git
+log/
+tmp/
+node_modules/
+config/master.key
+.DS_Store
+.env
+.bundle/
+db/development.sqlite3*
+vendor/
