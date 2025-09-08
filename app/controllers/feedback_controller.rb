@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class FeedbackController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     name = params[:name]
