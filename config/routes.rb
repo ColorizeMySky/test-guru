@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
 
+  get '/feedback', to: 'feedback#new'
+  post '/feedback', to: 'feedback#create'
+
   resources :tests do
     resources :questions, only: %i[show], shallow: true
 

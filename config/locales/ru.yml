@@ -40,6 +40,13 @@ ru:
         edit: "Редактировать"
         questions_count: "%{count} вопрос(ов)"
         show: "Показать"
+  feedback:
+    email: "Email"
+    message: "Сообщение"
+    name: "Имя"
+    success: "Сообщение успешно отправлено"
+    submit: "Отправить"
+    title: "Форма обратной связи"
   flash:
     admin:
       tests:

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      body { font-family: Arial, sans-serif; }
+      .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+      .header { background-color: #f8f9fa; padding: 10px; text-align: center; }
+      .content { margin: 20px 0; }
+      .footer { font-size: 12px; color: #6c757d; text-align: center; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Новое сообщение из формы обратной связи</h2>
+      </div>
+      <div class="content">
+        <p><strong>Имя:</strong> <%= @name %></p>
+        <p><strong>Email:</strong> <%= @email %></p>
+        <p><strong>Сообщение:</strong></p>
+        <p><%= @message %></p>
+      </div>
+      <div class="footer">
+        Отправлено через форму обратной связи сайта TestGuru
+      </div>
+    </div>
+  </body>
+</html>
