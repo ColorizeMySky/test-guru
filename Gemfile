@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 gem 'devise', '~> 4.0'
+gem 'devise-i18n'
 
 gem 'rails-i18n', '~> 7.0'
 
@@ -37,11 +38,11 @@ gem 'octicons_helper'
 
 gem 'octokit'
 
+gem 'dotenv-rails', require: 'dotenv/load'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-
-  gem 'dotenv-rails', require: 'dotenv/rails-now'
 end
 
 group :development do

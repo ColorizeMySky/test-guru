@@ -2,22 +2,22 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= form.label :first_name, 'Имя' %><br />
+    <%= form.label :first_name, t("helpers.label.user.first_name") %><br />
     <%= form.text_field :first_name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= form.label :last_name, 'Фамилия' %><br />
+    <%= form.label :last_name, t("helpers.label.user.last_name") %><br />
     <%= form.text_field :last_name %>
   </div>
 
   <div class="field">
-    <%= form.label :email %><br />
+    <%= form.label :email, t("helpers.label.user.email") %><br />
     <%= form.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= form.label :password %>
+    <%= form.label :password, t("helpers.label.user.password") %>
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> символов минимум)</em>
     <% end %><br />
@@ -25,7 +25,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :password_confirmation %><br />
+    <%= form.label :password_confirmation, t("helpers.label.user.password_confirmation") %><br />
     <%= form.password_field :password_confirmation, autocomplete: "new-password", id: "password-confirmation-input" %>
     <span id="password-match-icon" class="d-inline-flex align-items-center gap-1">
       <%= octicon 'check', class: 'd-none', style: 'width: 24px; height: 24px; fill: green;' %>
@@ -34,7 +34,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Зарегистрироваться" %>
+    <%= form.submit t("helpers.submit.user.create") %>
   </div>
 <% end %>
 
