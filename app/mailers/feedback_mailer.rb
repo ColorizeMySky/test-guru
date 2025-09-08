@@ -6,7 +6,6 @@ class FeedbackMailer < ApplicationMailer
     @email = email
     @message = message
 
-    admin_emails = User.where(type: 'Admin').pluck(:email)
     return unless admin_emails.present?
 
     mail(
@@ -15,5 +14,11 @@ class FeedbackMailer < ApplicationMailer
       reply_to: @email,
       subject: 'Новое сообщение из формы обратной связи'
     )
+  end
+
+  private
+
+  def admin_emails
+    User.where(type: 'Admin').pluck(:email)
   end
 end
