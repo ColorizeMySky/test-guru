@@ -26,10 +26,8 @@ class TestPassagesController < ApplicationController
   end
 
   def send_completion_email
-    begin
-      TestsMailer.completed_test(@test_passage).deliver_now
-    rescue Net::SMTPAuthenticationError, Net::SMTPError, IOError => e
-      Rails.logger.error "Failed to send email: #{e.message}"
-    end
+    TestsMailer.completed_test(@test_passage).deliver_now
+  rescue Net::SMTPAuthenticationError, Net::SMTPError, IOError => e
+    Rails.logger.error "Failed to send email: #{e.message}"
   end
 end
