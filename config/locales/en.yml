@@ -40,6 +40,13 @@ en:
         edit: "Edit"
         questions_count: "%{count} question(s)"
         show: "Show"
+  feedback:
+    email: "Email"
+    message: "Message"
+    name: "Name"
+    submit: "Submit"
+    success: "Message sent successfully"
+    title: "Feedback Form"
   flash:
     admin:
       tests:
