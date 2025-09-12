@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages
   has_many :authored_tests, foreign_key: 'author_id', class_name: 'Test', dependent: :restrict_with_error
   has_many :gists, dependent: :destroy
+  has_many :user_badges, dependent: :destroy
+  has_many :badges, through: :user_badges
 
   scope :tests_by_level, ->(level) { joins(:results).where(tests: { level: level }) }
 

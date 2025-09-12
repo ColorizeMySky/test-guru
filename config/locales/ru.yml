@@ -40,6 +40,9 @@ ru:
         edit: "Редактировать"
         questions_count: "%{count} вопрос(ов)"
         show: "Показать"
+  badges:
+    index:
+      title: "Бэйджи"
   feedback:
     email: "Email"
     message: "Сообщение"
