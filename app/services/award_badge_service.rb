@@ -12,9 +12,7 @@ class AwardBadgeService
       rule_type = badge.rule_type
       value = badge.value
 
-      if BadgeRule.applies_to?(user, test, score, rule_type, value)
-        UserBadge.create!(user: user, badge: badge)
-      end
+      UserBadge.create!(user: user, badge: badge) if BadgeRule.applies_to?(user, test, score, rule_type, value)
     end
   end
 end
