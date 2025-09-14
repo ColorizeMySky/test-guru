@@ -13,7 +13,7 @@ class BadgeRule
     'answered_all_questions_wrong' => BadgeRules::AnsweredAllQuestionsWrongRule
   }.freeze
 
-  def self.applies_to?(user, test, score, rule_type, value)
+  def self.applies_to?(user, test, score, rule_type)
     rule_class = RULE_TYPES[rule_type]
     return false unless rule_class
 
