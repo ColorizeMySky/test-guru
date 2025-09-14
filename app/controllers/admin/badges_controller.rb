@@ -2,7 +2,6 @@
 
 class Admin::BadgesController < Admin::BaseController
   before_action :authenticate_user!
-  before_action :admin_only
 
   layout 'admin'
 
@@ -46,9 +45,5 @@ class Admin::BadgesController < Admin::BaseController
 
   def badge_params
     params.require(:badge).permit(:name, :image, :rule_type, :value)
-  end
-
-  def admin_only
-    redirect_to root_path, alert: 'Доступ только для администраторов.' unless current_user.type == 'Admin'
   end
 end

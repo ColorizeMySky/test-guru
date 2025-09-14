@@ -35,10 +35,6 @@ class TestPassage < ApplicationRecord
     test.questions.order(:id).where('id <= ?', current_question.id).count
   end
 
-  def finalize!
-    AwardBadgeService.call(self)
-  end
-
   private
 
   def set_current_question
