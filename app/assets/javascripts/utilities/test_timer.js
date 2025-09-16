@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (timeLeft <= 0) {
       clearInterval(interval)
-      window.location.reload()
+      const form = document.querySelector('form')
+      if (form) form.submit()
     }
   }, 1000)
 })
