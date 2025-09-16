@@ -12,6 +12,11 @@
   </div>
 
   <div>
+    <%= form.label :timer, "Время на прохождение (минут)" %>
+    <%= form.number_field :timer, min: 1, step: 1 %>
+  </div>
+
+  <div>
     <%= form.label :category_id %>
     <%= form.collection_select :category_id, Category.all, :id, :name %>
   </div>

@@ -5,6 +5,8 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
+  after_initialize :set_timer_started_at, if: :new_record?
+
   before_validation :set_current_question
 
   attr_accessor :answer_ids
@@ -35,6 +37,20 @@ class TestPassage < ApplicationRecord
     test.questions.order(:id).where('id <= ?', current_question.id).count
   end
 
+  def time_left
+    return nil unless test.timer.present?
+    [test.timer * 60 - (Time.current - timer_started_at).to_i, 0].max
+  end
+
+  def timer_expired?
+    test.timer.present? && time_left <= 0
+  end
+
+  def expire!
+    self.current_question = nil
+    save!
+  end
+
   private
 
   def set_current_question
@@ -59,5 +75,10 @@ class TestPassage < ApplicationRecord
 
   def correct_answers
     current_question.answers.correct
+  end
+
+  def set_timer_started_at
+    return if timer_started_at.present?
+    self.timer_started_at = Time.current if test.timer.present? && timer_started_at.nil?
   end
 end

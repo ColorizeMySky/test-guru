@@ -3,6 +3,7 @@
 class TestPassagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_test_passage, only: %i[show update result]
+  before_action :check_timer_expired, only: [:show, :update]
 
   def show; end
 
@@ -30,5 +31,12 @@ class TestPassagesController < ApplicationController
     TestsMailer.completed_test(@test_passage).deliver_now
   rescue Net::SMTPAuthenticationError, Net::SMTPError, IOError => e
     Rails.logger.error "Failed to send email: #{e.message}"
+  end
+
+  def check_timer_expired
+    if @test_passage.timer_expired?
+      @test_passage.expire!
+      redirect_to result_test_passage_path(@test_passage), alert: 'Время вышло. Тест завершён.'
+    end
   end
 end

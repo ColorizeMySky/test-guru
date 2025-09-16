@@ -18,4 +18,5 @@ class Test < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: { scope: :level }
   validates :level, numericality: { only_integer: true, greater_than: 0 }
+  validates :timer, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
 end
