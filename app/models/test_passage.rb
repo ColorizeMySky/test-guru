@@ -39,6 +39,7 @@ class TestPassage < ApplicationRecord
 
   def time_left
     return nil unless test.timer.present?
+
     [test.timer * 60 - (Time.current - timer_started_at).to_i, 0].max
   end
 
@@ -79,6 +80,7 @@ class TestPassage < ApplicationRecord
 
   def set_timer_started_at
     return if timer_started_at.present?
+
     self.timer_started_at = Time.current if test.timer.present? && timer_started_at.nil?
   end
 end
