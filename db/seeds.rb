@@ -1,7 +1,11 @@
+Gist.delete_all
+TestPassage.delete_all
+UserBadge.delete_all
 Answer.delete_all
 Question.delete_all
 Test.delete_all
 Category.delete_all
+Badge.delete_all
 User.delete_all
 
 user1 = User.create!(email: 'alice@example.com', password: 'securepass', first_name: 'Alice', last_name: 'Smith', type: 'User')
@@ -147,3 +151,10 @@ q11 = Question.create!(
     Answer.new(answer_text: 'background: tomato', is_correct: false)
   ]
 )
+
+Badge.create!(name: 'Прошёл тест с awesome в названии', image: 'badges/awesome.jpg', rule_type: 'test_name_contains_awesome')
+Badge.create!(name: 'ID совпал со счётом', image: 'badges/the_same.jpg', rule_type: 'same_score_as_user_id')
+Badge.create!(name: 'Пятница, 13-е', image: 'badges/friday.jpg', rule_type: 'test_passed_on_friday_13th')
+Badge.create!(name: 'Затмение!', image: 'badges/eclipse.jpg', rule_type: 'completed_test_during_eclipse')
+Badge.create!(name: 'Простое число баллов', image: 'badges/prime.jpg', rule_type: 'scored_prime_number_of_points')
+Badge.create!(name: 'Все ответы не верны', image: 'badges/zero.jpg', rule_type: 'answered_all_questions_wrong')

@@ -1,0 +1,33 @@
+<h1>Все бэйджи</h1>
+
+<h2 class="mt-4">Ваши бэйджи</h2>
+<% if @user_badges.any? %>
+  <div class="row">
+    <% @user_badges.each do |badge| %>
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <%= image_tag badge.image, class: "card-img-top", alt: badge.name %>
+          <div class="card-body">
+            <p class="card-text"><strong><%= badge.name %></strong></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p class="text-muted">У вас пока нет ни одного бэйджа.</p>
+<% end %>
+
+<h2 class="mt-4">Доступные бэйджи</h2>
+<div class="row">
+  <% @badges.each do |badge| %>
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <%= image_tag badge.image, class: "card-img-top", alt: badge.name %>
+        <div class="card-body">
+          <p class="card-text"><strong><%= badge.name %></strong></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -40,6 +40,9 @@ en:
         edit: "Edit"
         questions_count: "%{count} question(s)"
         show: "Show"
+  badges:
+    index:
+      title: "Badges"
   feedback:
     email: "Email"
     message: "Message"

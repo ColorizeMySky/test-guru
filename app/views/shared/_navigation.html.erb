@@ -7,6 +7,15 @@
     <span>TestGuru</span>
   <% end %>
 
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <%= link_to t('.tests'), tests_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to t('.badges'), badges_path, class: 'nav-link' %>
+    </li>
+  </ul>
+
   <div class="navbar-text">
     <% if user_signed_in? %>
       <p>
