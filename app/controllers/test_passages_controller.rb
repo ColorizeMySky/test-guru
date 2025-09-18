@@ -9,7 +9,10 @@ class TestPassagesController < ApplicationController
   def result; end
 
   def update
-    return handle_timer_expired if @test_passage.timer_expired?
+    if @test_passage.complete_if_timer_expired!
+      redirect_to result_test_passage_path(@test_passage), alert: 'Время вышло. Тест завершён.'
+      return
+    end
 
     @test_passage.accept!(params[:answer_ids])
 

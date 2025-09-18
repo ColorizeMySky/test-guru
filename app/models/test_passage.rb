@@ -52,6 +52,13 @@ class TestPassage < ApplicationRecord
     save!
   end
 
+  def complete_if_timer_expired!
+    return unless timer_expired?
+
+    expire!
+    true
+  end
+
   private
 
   def set_current_question
