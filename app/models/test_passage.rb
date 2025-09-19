@@ -6,10 +6,9 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   after_initialize :set_timer_started_at, if: :new_record?
+  after_initialize :set_current_question, if: :new_record?
 
-  before_validation :set_current_question
-
-  attr_accessor :answer_ids
+  attr_accessor :answer_ids,  :expired_by_timer
 
   SUCCESS_RATE_LEVEL = 85
 
@@ -18,8 +17,14 @@ class TestPassage < ApplicationRecord
   end
 
   def accept!(answer_ids)
+    return expire! if timer_expired?
+
+    return if completed?
+
     self.correct_questions += 1 if correct_answer?(answer_ids)
     self.total_score += current_question.score if current_question.present?
+
+    set_current_question
     save!
   end
 
@@ -34,6 +39,8 @@ class TestPassage < ApplicationRecord
   end
 
   def current_question_number
+    return 0 if current_question.nil?
+
     test.questions.order(:id).where('id <= ?', current_question.id).count
   end
 
@@ -49,14 +56,8 @@ class TestPassage < ApplicationRecord
 
   def expire!
     self.current_question = nil
+    self.expired_by_timer = true
     save!
-  end
-
-  def complete_if_timer_expired!
-    return unless timer_expired?
-
-    expire!
-    true
   end
 
   private

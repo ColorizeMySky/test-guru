@@ -9,17 +9,14 @@ class TestPassagesController < ApplicationController
   def result; end
 
   def update
-    if @test_passage.complete_if_timer_expired!
-      redirect_to result_test_passage_path(@test_passage), alert: 'Время вышло. Тест завершён.'
-      return
-    end
-
     @test_passage.accept!(params[:answer_ids])
 
-    if @test_passage.completed?
-      handle_completed_test
+    return render :show unless @test_passage.completed?
+
+    if @test_passage.expired_by_timer
+      redirect_to result_test_passage_path(@test_passage), alert: 'Время вышло. Тест завершён.'
     else
-      render :show
+      handle_completed_test
     end
   end
 
@@ -33,11 +30,6 @@ class TestPassagesController < ApplicationController
     TestsMailer.completed_test(@test_passage).deliver_now
   rescue Net::SMTPAuthenticationError, Net::SMTPError, IOError => e
     Rails.logger.error "Failed to send email: #{e.message}"
-  end
-
-  def handle_timer_expired
-    @test_passage.expire!
-    redirect_to result_test_passage_path(@test_passage), alert: 'Время вышло. Тест завершён.'
   end
 
   def handle_completed_test
