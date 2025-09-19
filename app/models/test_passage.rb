@@ -8,7 +8,7 @@ class TestPassage < ApplicationRecord
   after_initialize :set_timer_started_at, if: :new_record?
   after_initialize :set_current_question, if: :new_record?
 
-  attr_accessor :answer_ids,  :expired_by_timer
+  attr_accessor :answer_ids, :expired_by_timer
 
   SUCCESS_RATE_LEVEL = 85
 
