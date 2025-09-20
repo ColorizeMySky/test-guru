@@ -5,9 +5,10 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  before_validation :set_current_question
+  after_initialize :set_timer_started_at, if: :new_record?
+  after_initialize :set_current_question, if: :new_record?
 
-  attr_accessor :answer_ids
+  attr_accessor :answer_ids, :expired_by_timer
 
   SUCCESS_RATE_LEVEL = 85
 
@@ -16,8 +17,14 @@ class TestPassage < ApplicationRecord
   end
 
   def accept!(answer_ids)
+    return expire! if timer_expired?
+
+    return if completed?
+
     self.correct_questions += 1 if correct_answer?(answer_ids)
     self.total_score += current_question.score if current_question.present?
+
+    set_current_question
     save!
   end
 
@@ -32,7 +39,25 @@ class TestPassage < ApplicationRecord
   end
 
   def current_question_number
+    return 0 if current_question.nil?
+
     test.questions.order(:id).where('id <= ?', current_question.id).count
+  end
+
+  def time_left
+    return nil unless test.timer.present? && timer_started_at.present?
+
+    [test.timer * 60 - (Time.current - timer_started_at).to_i, 0].max
+  end
+
+  def timer_expired?
+    test.timer.present? && time_left <= 0
+  end
+
+  def expire!
+    self.current_question = nil
+    self.expired_by_timer = true
+    save!
   end
 
   private
@@ -59,5 +84,11 @@ class TestPassage < ApplicationRecord
 
   def correct_answers
     current_question.answers.correct
+  end
+
+  def set_timer_started_at
+    return if timer_started_at.present?
+
+    self.timer_started_at = Time.current if test.timer.present? && timer_started_at.nil?
   end
 end

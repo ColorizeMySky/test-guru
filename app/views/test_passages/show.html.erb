@@ -1,6 +1,12 @@
 <div class="container">
   <h1  class="my-4">Прохождение теста: <%= @test_passage.test.name %></h1>
 
+  <% if @test_passage.test.timer.present? %>
+    <div id="timer" class="alert alert-info">
+      Осталось времени: <span id="time-left"><%= @test_passage.time_left %></span> секунд
+    </div>
+  <% end %>
+
   <%= render 'progress_bar' %>
 
   <div class="d-flex justify-content-between mb-3">

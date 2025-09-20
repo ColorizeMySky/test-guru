@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_09_11_222438) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_16_171503) do
   create_table "answers", force: :cascade do |t|
     t.string "answer_text", null: false
     t.boolean "is_correct", default: false, null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_11_222438) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "total_score", default: 0
+    t.datetime "timer_started_at"
     t.index ["current_question_id"], name: "index_test_passages_on_current_question_id"
     t.index ["test_id"], name: "index_test_passages_on_test_id"
     t.index ["user_id"], name: "index_test_passages_on_user_id"
@@ -84,6 +85,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_11_222438) do
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "timer"
     t.index ["author_id"], name: "index_tests_on_author_id"
     t.index ["category_id"], name: "index_tests_on_category_id"
     t.index ["name"], name: "index_tests_on_name"
